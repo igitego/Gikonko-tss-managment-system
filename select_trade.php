@@ -9,14 +9,12 @@
 <body>
     <table border="2" cellpadding="5" cellspacing="2">
         <tr>
-            <th>Module_Id</th>
-            <th>Module_Name</th>
-            <th>Trade_Id</th>
-        
+            <th>trade_Id</th>
+            <th>Trade_name</th>
         </tr>
         <?php
         include("conn.php");
-        $slct="SELECT * FROM modules";
+        $slct="SELECT * FROM trades";
         $query=mysqli_query($conn,$slct);
         
         if (mysqli_num_rows($query) > 0) {
@@ -24,9 +22,8 @@
                 echo 
                   "
                   <tr>
-                     <td>{$row['Module_Id']}</td>
-                     <td>{$row['Module_Name']}</td>
-                     <td>{$row['Trade_Id']}</td>
+                     <td>{$row['trade_Id']}</td>
+                     <td>{$row['Trade_name']}</td>
                   </tr>
                   ";
             }
@@ -35,7 +32,7 @@
 
 
 ?>
-
+        
     </table>
 </body>
 </html>
