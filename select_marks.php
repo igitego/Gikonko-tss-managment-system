@@ -38,8 +38,8 @@
                      <td>{$row['summative_assessment']}</td>
                      <td>{$row['Total_mark']}</td>
                      <td>{$row['Result']}</td> 
-                     <td><a href='update_marks.php?Marks_Id={$row['Mark_Id']}'>Update</a></td>
-                     <td><a href='delete_marks.php?Marks_Id={$row['Mark_Id']}'>Delete</a></td>
+                     <td><a href='update_marks.php?Mark_Id={$row['Mark_Id']}'>Update</a></td>
+                     <td><a href='delete_marks.php?Mark_Id={$row['Mark_Id']}'>Delete</a></td>
                   </tr>
                   ";
             }
