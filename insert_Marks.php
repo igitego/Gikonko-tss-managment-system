@@ -1,5 +1,15 @@
 <?php
-   include("conn.php");
+     include("conn.php");
+     
+     if(isset($_POST['insert'])) {
+        
+        $TraineeID = $_POST['Trainee_id']
+        $ModuleID = $_POST['Module_id']
+        $summative = $_POST['summative_assessment']
+        $Formative = $_POST['Formative_assessment']
+        $sql = "INSERT INTO marks(Trainee_id, Module_id, summative_assessment, Formative_assessment) VALUES()"
+    
+            }
 ?>
 
 
@@ -20,6 +30,8 @@
         <input type="number" name="summative_assessment" > <br>
         <label for="">Formative /50</label>
         <input type="number" name="Formative_assessment" > <br>
+
+        <button name="insert">Add</button>
 
     </form>
 </body>
