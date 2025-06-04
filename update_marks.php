@@ -16,16 +16,22 @@
    if (isset($_POST['update'])) {
             
         $TraineeID = $_POST['Trainee_id'];
+        $Mark_Id = $_POST['Mark_Id'];
         $ModuleID = $_POST['Module_id'];
         $summative = $_POST['summative_assessment'];
         $Formative = $_POST['Formative_assessment'];
 
-        $sql = "UPDATE marks
-      SET    Trainee_id           = '$TraineeID',
-             Module_id            = '$ModuleID',
-             summative_assessment = '$summative',
-             Formative_assessment = '$Formative'
-      WHERE  Mark_Id = '$Mark_Id";
+        $total = $summative + $Formative;
+        $result = ($total) >= 70 ? "Competent" : "Not yet competent";
+
+        $sql = "UPDATE marks SET 
+              Trainee_id = '$TraineeID', 
+              Module_id = '$ModuleID', 
+              summative_assessment = '$summative', 
+             Formative_assessment = '$Formative',
+             Result = '$result', Total_mark = '$total' 
+             WHERE Mark_Id = '$Mark_Id'";
+
 
         $query = mysqli_query($conn, $sql);
 
@@ -45,6 +51,7 @@
 </head>
 <body>
     <form action="" method="post">
+        <input type="hidden" name="Mark_Id" value="<?php echo $Mark_Id; ?>">
         <label for="">Trainee id</label>
         <input type="number" name="Trainee_id" value="<?php echo $row['Trainee_id'];?>"> <br>
         <label for="">Module id</label>
