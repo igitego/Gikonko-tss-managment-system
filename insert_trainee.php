@@ -1,6 +1,4 @@
-<?php
-include("conn.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +7,46 @@ include("conn.php");
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action=""method="POST">
 <label for=""> FirstNames</label>
-<input type="text"name="FirstNames">
+<input type="text"name="FirstNames"><br><br>
 <label for="">lastNames</label>
-<input type="text"name="LastName">
+<input type="text"name="LastName"><br><br>
 <label for="">gender</label>
-<input type="text"name="Gender">
+<input type="text"name="Gender"><br><br>
 <label for="">Trade_Id</label>
-<input type="text"name="Trade_Id">
+<input type="text"name="Trade_Id"><br><br>
 <button name="insert">Add</button>
-
-
     </form>
 </body>
 </html>
+<?php
 
+include("conn.php");
+if(isset($_POST['insert']))
+{
+    $Fname=$_POST['FirstNames'];
+    $lname=$_POST['LastName'];
+    $gender=$_POST['Gender'];
+    $trade_id=$_POST['Trade_Id'];
+
+
+    $INSERT="INSERT INTO trainees(FirstNames,LastName,Gender,Trade_Id) 
+    VALUES('$Fname','$lname','$gender','$trade_id')";
+    $sql=mysqli_query($conn,$INSERT);
+    if($sql){
+        echo"data inserted";
+    }
+    else{
+        echo"data not inserted";
+    }
+}
+
+
+
+
+
+
+
+?>
 
