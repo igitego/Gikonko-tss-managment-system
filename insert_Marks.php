@@ -3,11 +3,25 @@
      
      if(isset($_POST['insert'])) {
         
-        $TraineeID = $_POST['Trainee_id']
-        $ModuleID = $_POST['Module_id']
-        $summative = $_POST['summative_assessment']
-        $Formative = $_POST['Formative_assessment']
-        $sql = "INSERT INTO marks(Trainee_id, Module_id, summative_assessment, Formative_assessment) VALUES()"
+        $TraineeID = $_POST['Trainee_id'];
+        $ModuleID = $_POST['Module_id'];
+        $summative = $_POST['summative_assessment'];
+        $Formative = $_POST['Formative_assessment'];
+
+        $total = $summative + $Formative;
+        $result = ($total) >= 70 ? "Competent" : "Not yet competent";
+
+
+        $sql = "INSERT INTO marks(Trainee_id, Module_id, summative_assessment, Formative_assessment, Total_mark, Result) 
+                VALUES('$TraineeID', '$ModuleID', '$summative', '$Formative', '$total', '$result')";
+         $query = mysqli_query($conn, $sql);
+
+         if ($query) {
+            echo "Trainee inserted" . $result;
+         } else {
+            die("ERROR:" . mysqli_error($conn));
+         }
+
     
             }
 ?>
