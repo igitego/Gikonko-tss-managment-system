@@ -17,7 +17,7 @@
          $query = mysqli_query($conn, $sql);
 
          if ($query) {
-            echo "Trainee inserted" . $result;
+            echo "Trainee inserted <br>" . $result;
          } else {
             die("ERROR:" . mysqli_error($conn));
          }
